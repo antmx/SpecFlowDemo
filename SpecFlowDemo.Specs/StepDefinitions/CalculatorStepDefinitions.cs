@@ -9,12 +9,17 @@ namespace SpecFlowDemo.StepDefinitions
 	{
 		// For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
-		private Calc _calculator;
+		private readonly Calc _calculator;
+
+		public CalculatorStepDefinitions(Calc calculator)
+		{
+			_calculator = calculator;
+		}
 
 		[Given("I have a blank calculator")]
 		public void GivenIHaveANewCalculatorInstance()
 		{
-			_calculator = new Calc();
+			_calculator.Clear();
 		}
 
 		[Given($@"the first number is (.+)")]
@@ -25,9 +30,9 @@ namespace SpecFlowDemo.StepDefinitions
 
 		[Given("the second number is (.+)")]
 		[Given("the next number is (.+)")]
-		public void GivenTheSecondNumberIs(double number)
+		public void GivenTheNextNumberIs(double number)
 		{
-			_calculator.EnterFurtherNumber(number);
+			_calculator.EnterNextNumber(number);
 		}
 
 		[When("the two numbers are added")]

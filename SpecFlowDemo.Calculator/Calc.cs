@@ -5,11 +5,16 @@
 		public enum Action { Add, Subtract };
 
 		private double _total;
-		private double _furtherNumber;
+		private double _nextNumber;
 
 		public void EnterFirstNumber(double number)
 		{
 			_total = number;
+		}
+
+		public void EnterNextNumber(double number)
+		{
+			_nextNumber = number;
 		}
 
 		public void Calculate(Action action)
@@ -17,18 +22,13 @@
 			switch (action)
 			{
 				case Action.Add:
-					Add(_furtherNumber);
+					Add(_nextNumber);
 					break;
 
 				case Action.Subtract:
-					Subtract(_furtherNumber);
+					Subtract(_nextNumber);
 					break;
 			}
-		}
-
-		public void EnterFurtherNumber(double number)
-		{
-			_furtherNumber = number;
 		}
 
 		private void Add(double number)
@@ -44,6 +44,11 @@
 		public double Total
 		{
 			get { return _total; }
+		}
+
+		public void Clear()
+		{
+			_total = 0.0;
 		}
 	}
 }
