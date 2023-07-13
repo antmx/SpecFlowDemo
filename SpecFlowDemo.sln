@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowDemo.Specs", "SpecF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowDemo.Calculator", "SpecFlowDemo.Calculator\SpecFlowDemo.Calculator.csproj", "{AB30D072-8179-4BC3-B99E-2191CF9C198C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowDemo.Website", "SpecFlowDemo.Website\SpecFlowDemo.Website.csproj", "{F22AAB38-3151-4BAD-89B3-F1C99DAFDB69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AB30D072-8179-4BC3-B99E-2191CF9C198C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB30D072-8179-4BC3-B99E-2191CF9C198C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB30D072-8179-4BC3-B99E-2191CF9C198C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F22AAB38-3151-4BAD-89B3-F1C99DAFDB69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F22AAB38-3151-4BAD-89B3-F1C99DAFDB69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F22AAB38-3151-4BAD-89B3-F1C99DAFDB69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F22AAB38-3151-4BAD-89B3-F1C99DAFDB69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

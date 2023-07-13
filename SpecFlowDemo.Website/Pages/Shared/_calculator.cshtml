@@ -1,0 +1,147 @@
+﻿
+<script src="~/js/calc.js"></script>
+
+<script>
+    let _calc = new Calc();
+    let actionJustSet = false;
+
+    function setAction(action) {
+
+        _calc.CurrentAction(action);
+        actionJustSet = true;
+    }
+
+    function enterNumberFromInput() {
+
+        let totalInput = document.getElementById("total");
+        let totalValue = parseFloat(totalInput.value);
+
+        if (!isNaN(totalValue)) {
+            _calc.EnterNumber(totalValue);
+            actionJustSet = false;
+        }
+    }
+
+    function enterNumberFromButton(btn) {
+
+        let text = btn.textContent || btn.innerText;
+        let number = parseFloat(text);
+
+        if (!isNaN(number)) {
+            let totalInput = document.getElementById("total");
+
+            if (actionJustSet) {
+                totalInput.value = number.toString();
+            }
+            else {
+
+                if (totalInput.value == "0") {
+                    totalInput.value = number.toString();
+                }
+                else {
+                    totalInput.value = totalInput.value + number.toString();
+                }
+            }
+
+            _calc.EnterNumber(totalInput.value);
+
+            actionJustSet = false;
+        }
+    }
+
+    function enterDecimalPointFromButton() {
+
+        let totalInput = document.getElementById("total");
+
+        if (totalInput.value.indexOf(".") == -1) {
+            totalInput.value += ".";
+        }
+
+        actionJustSet = false;
+    }
+
+    function clearCalc() {
+
+        let totalInput = document.getElementById("total");
+        totalInput.value = 0;
+        _calc.Clear();
+        actionJustSet = false;
+    }
+
+    function calculate() {
+        
+        let totalInput = document.getElementById("total");
+        _calc.Calculate();
+        totalInput.value = _calc.Total();
+        actionJustSet = false;
+    }
+</script>
+
+<div class="calc">
+
+    <div class="row calc-total">
+        <div class="col-12 ">
+            <input onchange="enterNumberFromInput();" type="number" value="0" id="total" />
+        </div>
+    </div>
+
+    <div class="row calc-buttons">
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-7">7</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-8">8</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-9">9</button>
+        </div>
+        <div class="col-3">
+            <button onclick="clearCalc();">CE</button>
+        </div>
+    </div>
+
+    <div class="row calc-buttons">
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-4">4</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-5">5</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-6">6</button>
+        </div>
+        <div class="col-3">
+            <button onclick="setAction('subtract');" id="button-subtract">-</button>
+        </div>
+    </div>
+
+    <div class="row calc-buttons">
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-1">1</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-2">2</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-3">3</button>
+        </div>
+        <div class="col-3">
+            <button onclick="setAction('add');" id="button-add">+</button>
+        </div>
+    </div>
+
+    <div class="row calc-buttons">
+        <div class="col-3">
+        </div>
+        <div class="col-3">
+            <button onclick="enterNumberFromButton(this);" id="button-0">0</button>
+        </div>
+        <div class="col-3">
+            <button onclick="enterDecimalPointFromButton(this);" id="button-decimal-point">.</button>
+        </div>
+        <div class="col-3">
+            <button onclick="calculate();" id="button-calculate">=</button>
+        </div>
+    </div>
+
+</div>
