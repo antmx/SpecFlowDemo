@@ -17,37 +17,45 @@ namespace SpecFlowDemo.StepDefinitions
 		}
 
 		[Given("I have a blank calculator")]
-		public void GivenIHaveANewCalculatorInstance()
+		[StepDefinition("the calculator is cleared")]
+		public void GivenIHaveABlankCalculator()
 		{
 			_calculator.Clear();
 		}
 
-		[Given($@"the first number is (.+)")]
+		[When($@"the first number of (.+) is entered")]
 		public void GivenTheFirstNumberIs(double number)
 		{
 			_calculator.EnterFirstNumber(number);
 		}
 
-		[Given("the second number is (.+)")]
-		[Given("the next number is (.+)")]
+		[When("the next number of (.+) is entered")]
 		public void GivenTheNextNumberIs(double number)
 		{
 			_calculator.EnterNextNumber(number);
 		}
 
-		[When("the two numbers are added")]
-		public void WhenTheTwoNumbersAreAdded()
+		[When(@"the action is set to Add")]
+		public void WhenTheActionIsSetToAdd()
 		{
-			// Implement act (action) logic
+			_calculator.CurrentAction = Calc.Action.Add;
+		}
 
-			_calculator.Calculate(Calc.Action.Add);
+		[When(@"the action is set to Subtract")]
+		public void WhenTheActionIsSetToSubtract()
+		{
+			_calculator.CurrentAction = Calc.Action.Subtract;
+		}
+
+		[When("the result is calculated")]
+		public void WhenTheResultIsCalculated()
+		{
+			_calculator.Calculate();
 		}
 
 		[Then("the result should be (.+)")]
 		public void ThenTheResultShouldBe(double expectedResult)
 		{
-			// Implement assert (verification) logic
-
 			double actualResult = _calculator.Total;
 
 			actualResult.Should().Be(expectedResult);
